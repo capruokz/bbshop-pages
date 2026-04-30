@@ -91,7 +91,6 @@
     <div class="pack-hero">
       <div style="font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">หมายเลขซองของคุณ</div>
       <div class="pack-id-big">PK-001-040</div>
-      <div id="pack-status-line" class="pack-status-big"></div>
     </div>
 
     <div class="section">
@@ -133,11 +132,9 @@
     rateEl.appendChild(chip);
   });
 
-  // Pack status
-  const sold = PACK.status === 'sold';
-  const statusLine = document.getElementById('pack-status-line');
-  statusLine.className = 'pack-status-big ' + (sold ? 'stat-sold' : 'stat-avail');
-  statusLine.textContent = sold ? '🔴 ซองนี้ถูกขายแล้ว' : '🟢 ซองนี้ยังว่างอยู่';
+  // (Per-pack sold status removed 2026-04-30 — labels go *inside* the pack
+  //  with the cards, so customer sees this only after opening the pack.
+  //  Total sold count is shown at the page header.)
 
   // Cards
   const cards = PACK.cards || [];
