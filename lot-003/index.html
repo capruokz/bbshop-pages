@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BB SHOP · ล็อต #003</title>
+  <meta name="robots" content="noindex,nofollow"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Sarabun','Noto Sans Thai',system-ui,sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh;font-size:14px;line-height:1.5}
+    .wrap{max-width:680px;margin:0 auto;padding:32px 20px}
+    .site-title{font-size:22px;font-weight:800;color:#fb923c;margin-bottom:4px}
+    .site-sub{font-size:14px;color:#94a3b8;margin-bottom:24px}
+    .card{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:18px;margin-bottom:14px}
+    .stats-row{display:flex;gap:12px;margin-bottom:14px}
+    .stat-box{flex:1;background:#1e293b;border:1px solid #334155;border-radius:12px;padding:14px;text-align:center}
+    .stat-label{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em}
+    .stat-val{font-weight:800;font-size:24px;margin-top:4px}
+    .stat-sold{color:#f87171}.stat-avail{color:#34d399}
+    .section-label{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+    .chip{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid;margin:0 4px 4px 0}
+    .rarity-SR{background:#7c3aed22;color:#a78bfa;border-color:#7c3aed44}
+    .rarity-SEC{background:#be123c22;color:#fb7185;border-color:#be123c44}
+    .rarity-Leader{background:#92400e22;color:#fbbf24;border-color:#92400e44}
+    .rarity-P{background:#0f766e22;color:#5eead4;border-color:#0f766e44}
+    .rarity-Don{background:#1e3a5f22;color:#93c5fd;border-color:#1e3a5f44}
+    .info{font-size:13px;color:#cbd5e1;line-height:1.6;margin-top:12px}
+    .footer{margin-top:32px;text-align:center;font-size:12px;color:#475569}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="site-title">BB SHOP 🎴</div>
+    <div class="site-sub">BB-Set-002</div>
+
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-label">ขายไปแล้ว</div>
+        <div class="stat-val stat-sold">0/50</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">ยังเหลือ</div>
+        <div class="stat-val stat-avail">50/50</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-label">อัตราการ์ด lucky (per 50 ซอง)</div>
+      <div id="rate-chips"></div>
+      <div class="info">
+        หน้านี้แสดงเฉพาะภาพรวมของล็อตเท่านั้น — ลูกค้าสามารถสแกน QR<br>
+        บนซองของตัวเองเพื่อดูเนื้อในของซองนั้นๆ ได้<br>
+        <br>
+        <strong>หมายเหตุ:</strong> เนื้อในของแต่ละซองเป็นความลับเฉพาะลูกค้าผู้ซื้อ —<br>
+        เพื่อรักษาความเป็นเซอร์ไพรส์ของระบบสุ่ม
+      </div>
+    </div>
+
+    <div class="footer">
+      ข้อมูลบันทึกก่อนจัดส่ง · ปัญหา @bbshop · 24 ชม.
+    </div>
+  </div>
+
+  <script>
+  const RATE_DIST = {"SR": 15, "Leader": 10, "P": 15, "Don": 7, "SEC": 3};
+  const map = { SR:'rarity-SR', SEC:'rarity-SEC', Leader:'rarity-Leader',
+                 P:'rarity-P', Don:'rarity-Don', R:'rarity-R', C:'rarity-C', UC:'rarity-UC' };
+  const rateEl = document.getElementById('rate-chips');
+  Object.entries(RATE_DIST).forEach(([rarity, count]) => {
+    const chip = document.createElement('span');
+    chip.className = 'chip ' + (map[rarity] || 'rarity-C');
+    chip.textContent = rarity + ' ×' + count;
+    rateEl.appendChild(chip);
+  });
+  </script>
+</body>
+</html>
