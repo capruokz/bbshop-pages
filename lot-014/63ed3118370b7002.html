@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BB SHOP · PK-014-012 — ตรวจสอบซอง</title>
+  <meta name="robots" content="noindex,nofollow"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Sarabun','Noto Sans Thai',system-ui,sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh;font-size:14px;line-height:1.5}
+    a{color:inherit}
+    img{display:block;max-width:100%}
+
+    /* Layout */
+    .wrap{max-width:760px;margin:0 auto;padding:0 16px}
+    .flex{display:flex}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}
+    .justify-between{justify-content:space-between}.gap-2{gap:8px}.gap-3{gap:12px}.gap-4{gap:16px}
+    .flex-1{flex:1}.text-center{text-align:center}
+
+    /* Header */
+    .site-header{background:#0f172a;border-bottom:1px solid #334155;padding:14px 16px;position:sticky;top:0;z-index:10}
+    .site-title{font-size:18px;font-weight:700;color:#fb923c}
+    .site-sub{font-size:13px;color:#94a3b8;margin-top:2px}
+    .stat-box{background:#1e293b;border-radius:10px;padding:8px 14px;text-align:center;min-width:80px}
+    .stat-label{font-size:11px;color:#94a3b8}
+    .stat-val{font-weight:700;font-size:15px}
+    .stat-sold{color:#f87171}.stat-avail{color:#34d399}
+
+    /* Pack hero */
+    .pack-hero{background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #334155;border-radius:16px;padding:22px 20px;margin-bottom:16px;text-align:center}
+    .pack-id-big{font-family:monospace;font-size:32px;font-weight:900;color:#fb923c;letter-spacing:.05em}
+    .pack-status-big{font-size:14px;font-weight:700;margin-top:8px}
+
+    /* Sections */
+    .section{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:16px;margin-bottom:16px}
+    .section-label{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+
+    /* Card grid */
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px;margin-top:10px}
+    .card-tile{display:flex;flex-direction:column;gap:4px}
+    .card-img-wrap{position:relative;border-radius:8px;overflow:hidden;border:2px solid #334155}
+    .card-img-wrap.lucky{border-color:rgba(245,158,11,.6)}
+    .card-img-wrap.rare{border-color:rgba(56,189,248,.4)}
+    .card-img-wrap img{width:100%;aspect-ratio:2/3;object-fit:cover}
+    .card-img-fallback{width:100%;aspect-ratio:2/3;background:#0f172a;display:flex;align-items:center;justify-content:center;font-size:10px;color:#475569;font-family:monospace}
+    .card-rarity-badge{position:absolute;top:4px;left:4px}
+    .card-name{font-size:11px;color:#e2e8f0;font-weight:500;line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+    .card-code{font-size:10px;color:#64748b;font-family:monospace}
+
+    /* Slot section header */
+    .slot-header{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin:16px 0 8px}
+    .slot-common{color:#94a3b8}.slot-rare{color:#7dd3fc}.slot-lucky{color:#fbbf24}
+
+    /* Rarity chips */
+    .chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700;border:1px solid}
+    .rarity-SR{background:#7c3aed22;color:#a78bfa;border-color:#7c3aed44}
+    .rarity-SEC{background:#be123c22;color:#fb7185;border-color:#be123c44}
+    .rarity-Leader{background:#92400e22;color:#fbbf24;border-color:#92400e44}
+    .rarity-P{background:#0f766e22;color:#5eead4;border-color:#0f766e44}
+    .rarity-Don{background:#1e3a5f22;color:#93c5fd;border-color:#1e3a5f44}
+    .rarity-R{background:#1e40af22;color:#93c5fd;border-color:#1e40af44}
+    .rarity-C,.rarity-UC{background:#1e293b;color:#94a3b8;border-color:#334155}
+
+    /* Footer */
+    .site-footer{max-width:760px;margin:0 auto;padding:32px 16px;text-align:center;font-size:12px;color:#475569}
+  </style>
+</head>
+<body>
+
+  <div class="site-header">
+    <div class="wrap flex items-center justify-between flex-wrap gap-3">
+      <div>
+        <div class="site-title">BB SHOP 🎴</div>
+        <div class="site-sub">5 ใบ #SET 7</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-top:16px">
+
+    <div class="pack-hero">
+      <div style="font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">หมายเลขซองของคุณ</div>
+      <div class="pack-id-big">PK-014-012</div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">อัตราการ์ด lucky (per 50 ซอง)</div>
+      <div id="rate-chips" class="flex flex-wrap gap-2"></div>
+      <div style="font-size:11px;color:#64748b;margin-top:8px;line-height:1.5">
+        * ภาพรวมการสุ่มของล็อต. ลูกค้าจะเห็นเฉพาะการ์ดในซองของตัวเอง<br>
+        * ไม่สามารถดูเนื้อในซองอื่นๆ ได้ — เพื่อรักษาความเป็นเซอร์ไพรส์ของลูกค้าท่านอื่น
+      </div>
+    </div>
+
+    <div id="cards-section" class="section">
+      <div class="section-label">การ์ดในซองนี้</div>
+      <div id="cards-area"></div>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    ข้อมูลนี้บันทึกก่อนจัดส่ง เพื่อความโปร่งใสในการสุ่ม · ปัญหา @bbshop · 24 ชม.
+  </div>
+
+  <script>
+  // เฉพาะข้อมูลของซองนี้ + batch counter — ไม่มี data ของซองอื่น
+  const PACK = {"id": "PK-014-012", "batch_id": "014", "pack_number": 12, "cards": [], "status": "available", "sold_to_order_id": "", "sold_at": "", "notes": "", "public_token": "63ed3118370b7002", "created_at": "2026-05-12T04:49:29+00:00", "updated_at": "2026-05-12T04:49:29+00:00"};
+  const RATE_DIST = {"SR": 15, "Leader": 4, "P": 15, "Don": 14, "SEC": 2};
+
+  function rarityClass(r) {
+    const map = { SR:'rarity-SR', SEC:'rarity-SEC', Leader:'rarity-Leader',
+                   P:'rarity-P', Don:'rarity-Don', R:'rarity-R', C:'rarity-C', UC:'rarity-UC' };
+    return map[r] || 'rarity-C';
+  }
+
+  // Rate chips
+  const rateEl = document.getElementById('rate-chips');
+  Object.entries(RATE_DIST).forEach(([rarity, count]) => {
+    const chip = document.createElement('span');
+    chip.className = 'chip ' + rarityClass(rarity);
+    chip.textContent = rarity + ' ×' + count;
+    rateEl.appendChild(chip);
+  });
+
+  // (Per-pack sold status removed 2026-04-30 — labels go *inside* the pack
+  //  with the cards, so customer sees this only after opening the pack.
+  //  Total sold count is shown at the page header.)
+
+  // Cards
+  const cards = PACK.cards || [];
+  const common = cards.filter(c => c.slot_type === 'common');
+  const rare   = cards.filter(c => c.slot_type === 'rare');
+  const lucky  = cards.filter(c => c.slot_type === 'lucky');
+
+  function cardTile(c) {
+    const wrapCls = 'card-img-wrap' + (c.slot_type === 'lucky' ? ' lucky' : c.slot_type === 'rare' ? ' rare' : '');
+    const imgPart = c.image_url
+      ? `<img src="${c.image_url}" alt="${c.name || c.code}"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">`
+      : '';
+    const fallback = `<div class="card-img-fallback" style="${c.image_url ? 'display:none' : ''}">${c.code}</div>`;
+    return `<div class="card-tile">
+      <div class="${wrapCls}">
+        ${imgPart}${fallback}
+        <div class="card-rarity-badge"><span class="chip ${rarityClass(c.rarity)}">${c.rarity}</span></div>
+      </div>
+      <div class="card-name" title="${c.name || c.code}">${c.name || c.code}</div>
+      <div class="card-code">${c.code}</div>
+    </div>`;
+  }
+
+  function section(label, slotCls, list) {
+    if (!list.length) return '';
+    return `<div>
+      <div class="slot-header ${slotCls}">${label} (${list.length} ใบ)</div>
+      <div class="card-grid">${list.map(cardTile).join('')}</div>
+    </div>`;
+  }
+
+  const cardsArea = document.getElementById('cards-area');
+  if (!cards.length) {
+    cardsArea.innerHTML = '<div style="color:#64748b;font-size:14px;padding:16px 0;text-align:center">ยังไม่ได้กรอกการ์ดในซองนี้</div>';
+  } else {
+    cardsArea.innerHTML =
+      section('C / UC — ทั่วไป', 'slot-common', common) +
+      section('R — Rare', 'slot-rare', rare) +
+      section('LUCKY 🎯', 'slot-lucky', lucky);
+  }
+  </script>
+</body>
+</html>
